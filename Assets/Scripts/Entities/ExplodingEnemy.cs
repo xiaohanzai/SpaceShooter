@@ -6,6 +6,7 @@ public class ExplodingEnemy : Enemy
 {
     public int damage;
     public float rangeOfExplosion;
+    [SerializeField] private AudioSource explodeAudio;
 
     protected override void Start()
     {
@@ -18,6 +19,7 @@ public class ExplodingEnemy : Enemy
         {
             target.ReceiveDamage(damage);
         }
+        PlayAudio(explodeAudio);
         Die();
     }
 }

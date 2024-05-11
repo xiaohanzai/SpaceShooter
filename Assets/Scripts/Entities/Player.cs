@@ -46,6 +46,7 @@ public class Player : Character
     public override void Die()
     {
         OnPlayerDied.Invoke();
+        PlayAudio(killedAudio);
         gameObject.SetActive(false);
     }
 

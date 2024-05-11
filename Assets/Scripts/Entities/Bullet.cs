@@ -7,9 +7,12 @@ public class Bullet : MonoBehaviour
     public int bulletSpeed;
     private string targetTag;
     private int damage;
+    //[SerializeField] private AudioSource shootAudioSource;
+    //[SerializeField] private AudioSource hitAudioSource;
 
     private void Start()
     {
+        //shootAudioSource.Play();
         Destroy(gameObject, 5f);
     }
 
@@ -29,6 +32,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == targetTag)
         {
             collision.gameObject.GetComponent<IDamageable>().ReceiveDamage(damage);
+            //hitAudioSource.Play();
             Destroy(gameObject);
         }
     }
@@ -38,6 +42,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == targetTag)
         {
             collision.GetComponent<IDamageable>().ReceiveDamage(damage);
+            //hitAudioSource.Play();
             Destroy(gameObject);
         }
     }

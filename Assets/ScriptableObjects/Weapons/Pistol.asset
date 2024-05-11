@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788167e7b6b094dbbaff25c80e49e538, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  weaponName: Pistol
-  icon: {fileID: 21300000, guid: 87002bcea77bb4698a7949e5089fc322, type: 3}
   bulletReference: {fileID: 9176732422777561103, guid: 9e5a99313a4444fe3b0e2490f5738100, type: 3}
   damage: 2
+  shootAudio: {fileID: 7795458643460545114, guid: e53d17935f87542f49073a214261f949, type: 3}

@@ -6,6 +6,9 @@ public class ShooterEnemy : Enemy
 {
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private AudioSource laserAudio;
+
+    private bool isPreparingToShoot;
 
     protected override void FixedUpdate()
     {
@@ -18,10 +21,16 @@ public class ShooterEnemy : Enemy
                 lineRenderer.enabled = true;
                 lineRenderer.SetPosition(0, bulletSpawnPoint.position);
                 lineRenderer.SetPosition(1, target.transform.position);
+                if (!isPreparingToShoot)
+                {
+                    laserAudio.Play();
+                    isPreparingToShoot = true;
+                }
             }
             else
             {
                 lineRenderer.enabled = false;
+                isPreparingToShoot = false;
             }
         }
     }
@@ -29,5 +38,6 @@ public class ShooterEnemy : Enemy
     public override void Attack()
     {
         weapon.Shoot(bulletSpawnPoint.position, bulletSpawnPoint.rotation, "Player");
+        isPreparingToShoot = false;
     }
 }

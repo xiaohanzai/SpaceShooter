@@ -13,6 +13,8 @@ public abstract class Character : MonoBehaviour, IDamageable
 
     protected Rigidbody2D rb;
 
+    [SerializeField] protected AudioSource killedAudio;
+
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -38,4 +40,11 @@ public abstract class Character : MonoBehaviour, IDamageable
     public abstract void ChangeHealth();
 
     public virtual void ChangeWeapon(Weapon weapon) { }
+
+    protected void PlayAudio(AudioSource audioSource)
+    {
+        AudioSource audio = Instantiate(audioSource, transform.position, Quaternion.identity);
+        audio.Play();
+        Destroy(audio.gameObject, 3f);
+    }
 }

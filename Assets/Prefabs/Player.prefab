@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  killedAudio: {fileID: 5906285516616186095, guid: 5200d47cfa8a244f698b717829e82e09, type: 3}
   initHealthPoints: 10
   bulletSpawnPoint: {fileID: 4322333993939570479}
   playerWeapon: {fileID: 11400000, guid: d65d0322ce3644d3aa0364beccb089e3, type: 2}
@@ -178,6 +179,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnNukeHappened:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHighSpeedShootingEnabled:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &4322333994135526855

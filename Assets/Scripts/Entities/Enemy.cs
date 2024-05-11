@@ -66,6 +66,7 @@ public class Enemy : Character
             {
                 Instantiate(pickUpPrefab, transform.position, Quaternion.identity);
             }
+            PlayAudio(killedAudio);
             OnEnemyKilled.Invoke();
         }
         Destroy(gameObject);

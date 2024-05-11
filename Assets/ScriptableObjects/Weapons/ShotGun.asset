@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletReference: {fileID: 9176732422777561103, guid: 4181e9d1193b7454db8fa23d4f591e9c, type: 3}
   damage: 1
+  shootAudio: {fileID: 1515179827608091765, guid: 1e224ddc0de844484bf59cbc6c8c113c, type: 3}

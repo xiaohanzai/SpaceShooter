@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     private List<Enemy> enemiesSpawned = new List<Enemy>();
 
+    [SerializeField] private AudioSource nukeAudioSource;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -97,5 +99,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(item.gameObject);
         }
+
+        nukeAudioSource.Play();
     }
 }

@@ -201,6 +201,7 @@ MonoBehaviour:
   attackDistance: 5
   attackTimer: 0.2
   pickUpPrefab: {fileID: 3102202689627171730, guid: 1da57cc7f0bf643bc9c4e8d08959f738, type: 3}
+  killedAudio: {fileID: 3071030077691153448, guid: f4fcaf378e6ba4617a89e4114c512b69, type: 3}
   OnEnemyDied:
     m_PersistentCalls:
       m_Calls: []
