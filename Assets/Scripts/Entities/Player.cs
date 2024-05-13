@@ -8,8 +8,9 @@ public class Player : Character
     [SerializeField] private int initHealthPoints = 10;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private Weapon playerWeapon;
+    private Weapon _playerWeapon;
 
-    private Queue<NukePickUp> nukes = new Queue<NukePickUp>();
+    private Queue<NukePickUp> nukes = new Queue<NukePickUp>(); // TODO: I think it's gonna be empty... but I don't want to deal with it
 
     public UnityEvent OnPlayerDied;
     public UnityEvent OnHealthChanged;
@@ -29,14 +30,23 @@ public class Player : Character
         healthPoints.OnHealthDamaged.AddListener(ChangeHealth);
         healthPoints.OnHealthIncreased.AddListener(ChangeHealth);
         co_healthIncrease = StartCoroutine(GraduallyIncreaseHealth());
+        _playerWeapon = playerWeapon;
     }
 
     private void Update()
     {
-        if (!gameObject.activeInHierarchy)
-        {
-            StopCoroutine(co_healthIncrease);
-        }
+
+    }
+    
+    public void Reset()
+    {
+        transform.position = Vector3.zero;
+        transform.rotation = Quaternion.identity;
+        playerWeapon = _playerWeapon;
+        healthPoints.currentHealth = initHealthPoints;
+        nukes.Clear();
+        GetComponent<PlayerInput>().Reset();
+        co_healthIncrease = StartCoroutine(GraduallyIncreaseHealth());
     }
 
     public override void Attack()
@@ -52,6 +62,9 @@ public class Player : Character
         {
             ParticleManager.Instance.GetKilledParticles(transform.position);
         }
+        StopCoroutine(co_healthIncrease);
+        co_healthIncrease = null;
+
         gameObject.SetActive(false);
     }
 

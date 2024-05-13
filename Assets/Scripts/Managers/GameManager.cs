@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
         {
             ParticleManager.Instance.GetNukeParticles(enemy.transform.position);
             Destroy(enemy.gameObject);
+            ScoreManager.Instance.IncreaseScore();
         }
         enemiesSpawned.Clear();
 
@@ -104,5 +105,30 @@ public class GameManager : MonoBehaviour
         }
 
         nukeAudioSource.Play();
+    }
+
+    public void Reset()
+    {
+        player.gameObject.SetActive(true);
+        player.Reset();
+
+        foreach (var enemy in enemiesSpawned)
+        {
+            Destroy(enemy.gameObject);
+        }
+        enemiesSpawned.Clear();
+
+        PickUp[] pickUps = FindObjectsOfType<PickUp>();
+        foreach (var item in pickUps)
+        {
+            Destroy(item.gameObject);
+        }
+
+        StartSpawningEnemy();
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteAll(); // Clears all PlayerPrefs data
     }
 }

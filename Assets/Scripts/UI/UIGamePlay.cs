@@ -31,6 +31,16 @@ public class UIGamePlay : MonoBehaviour
         }
     }
 
+    private void Reset()
+    {
+        UpdateHealthText();
+        UpdateNukeText();
+        HideTimerImage();
+        HideGameOver();
+        UpdateScoreText(0);
+        UpdateHighestScoreText(PlayerPrefs.GetInt("HSCORE"));
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,10 +57,12 @@ public class UIGamePlay : MonoBehaviour
         player.gameObject.GetComponent<PlayerInput>().OnContinuousShooting.AddListener(UpdateShootingTimer);
 
         ScoreManager.Instance.OnTotalScoreChanged.AddListener(UpdateScoreText);
-        ScoreManager.Instance.OnTotalScoreChanged.AddListener(UpdateHighestScoreText);
+        ScoreManager.Instance.OnHighestScoreChanged.AddListener(UpdateHighestScoreText);
 
+        UpdateScoreText(0);
         UpdateHealthText();
         HideTimerImage();
+        UpdateHighestScoreText(PlayerPrefs.GetInt("HSCORE"));
     }
 
     // Update is called once per frame
@@ -65,6 +77,11 @@ public class UIGamePlay : MonoBehaviour
     private void ShowGameOver()
     {
         gameOverScreen.SetActive(true);
+    }
+
+    private void HideGameOver()
+    {
+        gameOverScreen.SetActive(false);
     }
 
     private void UpdateHealthText()
@@ -94,7 +111,9 @@ public class UIGamePlay : MonoBehaviour
 
     public void TryAgain()
     {
-
+        GameManager.Instance.Reset();
+        ScoreManager.Instance.Reset();
+        Reset();
     }
 
     private void UpdateShootingTimer(float t)

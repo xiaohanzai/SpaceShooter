@@ -16,6 +16,11 @@ public class PlayerInput : MonoBehaviour
 
     public UnityEvent<float> OnContinuousShooting;
 
+    public void Reset()
+    {
+        EndShooting();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
