@@ -42,6 +42,7 @@ public class UIGamePlay : MonoBehaviour
         player.OnNukesChanged.AddListener(UpdateNukeText);
         player.OnHighSpeedShootingEnabled.AddListener(ShowTimerImage);
         player.OnHighSpeedShootingDisabled.AddListener(HideTimerImage);
+        player.OnPlayerDied.AddListener(HideTimerImage);
 
         player.gameObject.GetComponent<PlayerInput>().OnContinuousShooting.AddListener(UpdateShootingTimer);
 

@@ -126,7 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9199835572013458564}
   - component: {fileID: 8259807038921908823}
-  - component: {fileID: 67908315070666982}
+  - component: {fileID: 5049037923066777449}
   - component: {fileID: 5398260572139857458}
   m_Layer: 0
   m_Name: ShooterEnemy
@@ -166,12 +166,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 0.5
+  killedAudio: {fileID: 3071030077691153448, guid: f4fcaf378e6ba4617a89e4114c512b69, type: 3}
   weapon: {fileID: 11400000, guid: d65d0322ce3644d3aa0364beccb089e3, type: 2}
   health: 2
   attackDistance: 4
   attackTimer: 2
   pickUpPrefab: {fileID: 828513496429299717, guid: 06fe2aec3ad9042d5a4bddb22de2e8b8, type: 3}
-  killedAudio: {fileID: 3071030077691153448, guid: f4fcaf378e6ba4617a89e4114c512b69, type: 3}
   OnEnemyDied:
     m_PersistentCalls:
       m_Calls: []
@@ -181,8 +181,8 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 969260538454391467}
   lineRenderer: {fileID: 2328821338341475666}
   laserAudio: {fileID: 773640768947321341}
---- !u!60 &67908315070666982
-PolygonCollider2D:
+--- !u!61 &5049037923066777449
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -204,13 +204,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.5058162, y: 0.2686996}
-      - {x: -0.5000878, y: 0.13228607}
-      - {x: -0.49637264, y: -0.12646997}
-      - {x: 0.50856125, y: -0.2483533}
-      - {x: 1.2192, y: 0.004308641}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!50 &5398260572139857458
 Rigidbody2D:
   serializedVersion: 4

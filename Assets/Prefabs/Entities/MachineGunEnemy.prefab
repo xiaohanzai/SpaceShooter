@@ -157,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7226124176765396780}
   - component: {fileID: 7232651046590510161}
-  - component: {fileID: 2792654647717371048}
+  - component: {fileID: 8668312802553257377}
   - component: {fileID: 4107406753498618659}
   m_Layer: 0
   m_Name: MachineGunEnemy
@@ -196,12 +196,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 0.5
+  killedAudio: {fileID: 3071030077691153448, guid: f4fcaf378e6ba4617a89e4114c512b69, type: 3}
   weapon: {fileID: 11400000, guid: 57dafaf975ea340f48c1f7e11c226dc3, type: 2}
   health: 4
   attackDistance: 5
   attackTimer: 0.2
   pickUpPrefab: {fileID: 3102202689627171730, guid: 1da57cc7f0bf643bc9c4e8d08959f738, type: 3}
-  killedAudio: {fileID: 3071030077691153448, guid: f4fcaf378e6ba4617a89e4114c512b69, type: 3}
   OnEnemyDied:
     m_PersistentCalls:
       m_Calls: []
@@ -209,8 +209,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   bulletSpawnPoint: {fileID: 8016932348175848417}
---- !u!60 &2792654647717371048
-PolygonCollider2D:
+--- !u!61 &8668312802553257377
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -232,13 +232,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.46559107, y: 0.504371}
-      - {x: -0.50048476, y: 0.5042647}
-      - {x: -0.4976706, y: -0.5086358}
-      - {x: 0.51269007, y: -0.47859758}
-      - {x: 0.9510565, y: 0.008635908}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!50 &4107406753498618659
 Rigidbody2D:
   serializedVersion: 4
