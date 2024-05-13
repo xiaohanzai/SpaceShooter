@@ -68,6 +68,10 @@ public class Enemy : Character
             }
             PlayAudio(killedAudio);
             OnEnemyKilled.Invoke();
+            if (ParticleManager.Instance != null)
+            {
+                ParticleManager.Instance.GetKilledParticles(transform.position);
+            }
         }
         Destroy(gameObject);
     }

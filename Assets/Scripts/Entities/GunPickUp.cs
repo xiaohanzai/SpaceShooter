@@ -8,8 +8,9 @@ public class GunPickUp : WeaponPickUp
     {
         if (collision.gameObject.tag == "Player")
         {
+            collision.gameObject.GetComponent<Player>().ChangeWeapon(newWeapon);
             collision.gameObject.GetComponent<Player>().EnableHighSpeedShooting();
-            base.PickMe(collision.gameObject.GetComponent<Character>());
+            Destroy(gameObject);
         }
     }
 

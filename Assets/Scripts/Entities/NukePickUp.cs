@@ -9,7 +9,7 @@ public class NukePickUp : PickUp
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Player>().AddNuke(this);
-            base.PickMe(collision.gameObject.GetComponent<Character>());
+            Destroy(gameObject);
         }
     }
 

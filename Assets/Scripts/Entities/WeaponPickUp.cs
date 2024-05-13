@@ -6,10 +6,14 @@ public class WeaponPickUp : PickUp
 {
     [SerializeField] protected Weapon newWeapon;
 
-    protected override void PickMe(Character character)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        character.ChangeWeapon(newWeapon);
-        base.PickMe(character);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player>().ChangeWeapon(newWeapon);
+            collision.gameObject.GetComponent<Player>().DisableHighSpeedShooting();
+            Destroy(gameObject);
+        }
     }
 
     // Start is called before the first frame update

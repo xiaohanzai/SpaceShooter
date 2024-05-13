@@ -20,6 +20,10 @@ public class ExplodingEnemy : Enemy
             target.ReceiveDamage(damage);
         }
         PlayAudio(explodeAudio);
+        if (ParticleManager.Instance != null)
+        {
+            ParticleManager.Instance.GetExplodeParticles(transform.position);
+        }
         Die();
     }
 }

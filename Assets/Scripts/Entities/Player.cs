@@ -16,6 +16,7 @@ public class Player : Character
     public UnityEvent OnNukesChanged;
     public UnityEvent OnNukeHappened;
     public UnityEvent OnHighSpeedShootingEnabled;
+    public UnityEvent OnHighSpeedShootingDisabled;
 
     private Coroutine co_healthIncrease;
 
@@ -47,6 +48,10 @@ public class Player : Character
     {
         OnPlayerDied.Invoke();
         PlayAudio(killedAudio);
+        if (ParticleManager.Instance != null)
+        {
+            ParticleManager.Instance.GetKilledParticles(transform.position);
+        }
         gameObject.SetActive(false);
     }
 
@@ -126,11 +131,13 @@ public class Player : Character
     {
         canDoHighSpeedShooting = true;
         OnHighSpeedShootingEnabled.Invoke();
+        GetComponent<PlayerInput>().ResetHighSpeedShootingTimer();
     }
 
     public void DisableHighSpeedShooting()
     {
         canDoHighSpeedShooting = false;
+        OnHighSpeedShootingDisabled.Invoke();
     }
 
     public bool IsHighSpeedShootingEnabled()

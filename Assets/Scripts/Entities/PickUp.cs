@@ -8,13 +8,8 @@ public class PickUp : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            PickMe(collision.gameObject.GetComponent<Character>());
+            Destroy(gameObject);
         }
-    }
-
-    protected virtual void PickMe(Character character)
-    {
-        Destroy(gameObject);
     }
 
     // Start is called before the first frame update

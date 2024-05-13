@@ -56,17 +56,18 @@ public class GameManager : MonoBehaviour
         while(true)
         {
             Enemy enemyPrefab = enemyPrefabs[j % enemyPrefabs.Length];
-            int n = Random.Range(1, 10);
+            int n = Random.Range(1, 3);
             for (int i = 0; i < n; i++)
             {
                 yield return new WaitForSeconds(3);
                 Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
                 Enemy enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-                enemy.OnEnemyDied.AddListener(EnemyKilled);
+                enemy.OnEnemyDied.AddListener(RemoveEnemy);
                 enemy.OnEnemyKilled.AddListener(ScoreManager.Instance.IncreaseScore);
                 enemiesSpawned.Add(enemy);
             }
             j++;
+            yield return new WaitForSeconds(5);
             yield return new WaitWhile(TooManyEnemies);
         }
     }
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
         StopCoroutine(co_SpawnEnemy);
     }
 
-    private void EnemyKilled(Enemy enemy)
+    private void RemoveEnemy(Enemy enemy)
     {
         enemiesSpawned.Remove(enemy);
     }
@@ -90,6 +91,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (var enemy in enemiesSpawned)
         {
+            ParticleManager.Instance.GetNukeParticles(enemy.transform.position);
             Destroy(enemy.gameObject);
         }
         enemiesSpawned.Clear();
@@ -97,6 +99,7 @@ public class GameManager : MonoBehaviour
         PickUp[] pickUps = FindObjectsOfType<PickUp>();
         foreach (var item in pickUps)
         {
+            ParticleManager.Instance.GetNukeParticles(item.transform.position);
             Destroy(item.gameObject);
         }
 

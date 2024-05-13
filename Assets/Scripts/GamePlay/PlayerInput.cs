@@ -61,10 +61,6 @@ public class PlayerInput : MonoBehaviour
     private void StartShooting()
     {
         isShooting = true;
-        if (shootingTimer > highSpeedShootingTime)
-        {
-            shootingTimer = 0f;
-        }
         startTime = Time.time;
     }
 
@@ -99,5 +95,10 @@ public class PlayerInput : MonoBehaviour
                 EndShooting();
             }
         }
+    }
+
+    public void ResetHighSpeedShootingTimer()
+    {
+        shootingTimer = 0;
     }
 }
