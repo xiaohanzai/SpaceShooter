@@ -6708,6 +6708,11 @@ MonoBehaviour:
   - {fileID: 915572587}
   - {fileID: 958546259}
   nukeAudioSource: {fileID: 1415914865}
+  nRound: 5
+  nSpawn: 3
+  initialInterval: 4
+  minInterval: 1
+  tBetweenWaves: 6
 --- !u!4 &1566445419
 Transform:
   m_ObjectHideFlags: 0
